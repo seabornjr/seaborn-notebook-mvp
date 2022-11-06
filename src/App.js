@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import "bootswatch/dist/darkly/bootstrap.min.css";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import Menubar from './components/Menubar';
+import CreateNote from './windows/CreateNote';
+import Home from './windows/Home';
+import ViewNotes from './windows/ViewNotes';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Menubar />
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+    
+        <Route path='/viewnotes'>
+          <ViewNotes />
+        </Route>
+
+        <Route path='/createnote'>
+         <CreateNote />
+        </Route>
+      </Switch>
     </div>
   );
 }
